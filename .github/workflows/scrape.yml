@@ -21,7 +21,7 @@ jobs:
           wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf  https://rediblesky.my.canva.site/home | true
           wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf -mkEpnp -e robots=off https://rediblesky.my.canva.site/home | true
           wget --mirror -p --html-extension --convert-links  https://rediblesky.my.canva.site/home | true
-          - name: Commit & Push changes
-      - uses: actions-js/push@master
+      - name: Commit & Push changes
+        uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
