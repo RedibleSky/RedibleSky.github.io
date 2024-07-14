@@ -1,0 +1,29 @@
+
+
+name: Scrape
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scrape website
+        run: |
+          wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf  https://rediblesky.my.canva.site/home
+          wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf -mkEpnp -e robots=off https://rediblesky.my.canva.site/home
+          wget --mirror -p --html-extension --convert-links  https://rediblesky.my.canva.site/home
+      - name: Commit report
+        run: |
+          git config --global user.name 'user0'
+          git config --global user.email 'user0-07161@users.noreply.github.com'
+          git commit -am "Update new scraped website"
+          git push
