@@ -18,9 +18,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Scrape website
         run: |
-          wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf  https://rediblesky.my.canva.site/home
-          wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf -mkEpnp -e robots=off https://rediblesky.my.canva.site/home
-          wget --mirror -p --html-extension --convert-links  https://rediblesky.my.canva.site/home
+          wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf  https://rediblesky.my.canva.site/home | true
+          wget --mirror -p --html-extension --convert-links -r --no-if-modified-since -r -N -l inf -mkEpnp -e robots=off https://rediblesky.my.canva.site/home | true
+          wget --mirror -p --html-extension --convert-links  https://rediblesky.my.canva.site/home | true
       - name: Commit report
         run: |
           git config --global user.name 'user0'
