@@ -25,5 +25,9 @@ jobs:
         run: |
           git config --global user.name 'user0'
           git config --global user.email 'user0-07161@users.noreply.github.com'
+          git add *
+          git add */* | true
+          git add */*/* | true
+          git add */*/*/* | true
           git commit -am "Update new scraped website"
           git push
