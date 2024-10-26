@@ -1,3 +1,4 @@
+# with the help of https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /exploraosExperimental.html
 Disallow: /exploraosExperimental
