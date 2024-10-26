@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /exploraosExperimental.html
+Disallow: /exploraosExperimental
+
+Disallow: /exploraosversionsExperimental.html
+Disallow: /exploraosversionsExperimental
+
+Disallow: /arTAAZJDKDKDKDJDJ.py
+Disallow: /ExploraOS.zip
