@@ -48,6 +48,7 @@
             text-align: center;
             color: grey;
             font-size: 20px;
+            display: block;
         }
 
       .bottom-left {
@@ -67,6 +68,12 @@
 
          background-color: rgba(255, 255, 255, 0);
          border: 0px;
+     }
+
+     @media (max-height: 747px) or (max-width:471px) {
+         .bottom-center {
+             display: none
+         }
      }
 
     
@@ -313,6 +320,7 @@
   </script>
   
   
+
 
 
 
