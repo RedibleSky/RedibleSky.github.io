@@ -1,0 +1,6 @@
+@keyframes colorChange { 
+  0% { background-color: white; } 
+  33% { background-color: red; } 
+  66% { background-color: blue; } 
+  100% { background-color: green; }
+}
