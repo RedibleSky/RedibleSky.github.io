@@ -67,7 +67,7 @@ function deleteCookie(name) {
     let expires = "expires=" + date.toUTCString();
     document.cookie = 'theme' + "=" + encodeURIComponent(finalvalue) + ";" + expires + ";path=/";
 
-    document.body.classList.add('fade-out'); setTimeout(() => { location.reload(); }, 500);
+    applytheme()
 }
 
     
