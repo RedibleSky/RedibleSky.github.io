@@ -267,7 +267,7 @@
 
     function  applytheme() {
         const themeValue = getCookie('theme');
-        var themeImage = document.getElementByID("theme");
+        var themeImage = document.getElementById("theme");
         if (themeValue === 'light') {
             document.body.className = 'light';
             themeImage.src = 'https://rediblesky.is-a.dev/home/images/darkThemeIcon.png'
