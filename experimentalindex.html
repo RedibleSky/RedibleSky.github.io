@@ -20,6 +20,10 @@
         filter: invert(100%);
     }
 
+    #theme {
+        cursor: pointer
+    }
+
     iframe {
         transition: 0.2s ease;
         border-radius: 16px;
@@ -96,6 +100,14 @@
             width: 70px; 
             height: 70px; 
             border-radius: 15px; 
+        }
+
+        body {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-out {
+            opacity: 0;
         }
 
         .rounded-imageExploraOS {
@@ -295,6 +307,8 @@
     date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
     let expires = "expires=" + date.toUTCString();
     document.cookie = 'theme' + "=" + encodeURIComponent(finalvalue) + ";" + expires + ";path=/";
+
+    document.body.classList.add('fade-out'); setTimeout(() => { location.reload(); }, 500);
 }
 
     function createcookieTheme() {
@@ -353,7 +367,7 @@
     
     
     
-    <img src="https://rediblesky.is-a.dev/home/images/darkThemeIcon.png" id="theme" style="bottom:0;left:0;width:6%;heigth:6%;display:flex;position:absolute;">
+    <img src="https://rediblesky.is-a.dev/home/images/darkThemeIcon.png" id="theme" style="bottom:0;left:0;width:6%;heigth:6%;display:flex;position:absolute;" onclick="setTheme()">
 
 <div class="topbar">
       <div class="smooth-foot">
