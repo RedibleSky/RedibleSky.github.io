@@ -33,6 +33,10 @@ body {
     
 }
 
+body {
+        transition: 0.5s ease;
+}
+
 .light .topbar {
     font-size: 24px;
     padding: 20px 40px;
