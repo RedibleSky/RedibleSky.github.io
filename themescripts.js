@@ -35,7 +35,7 @@ function deleteCookie(name) {
         var themeImage = document.getElementById("theme");
         if (themeValue === 'light') {
             document.body.className = 'light';
-            themeImage.src = 'https://rediblesky.is-a.dev/home/images/darkThemeIcon.png'
+            themeImage.src = 'https://rediblesky.is-a.dev/home/images/lightThemeIcon2.png'
         }
 
         if (themeValue === 'dark') {
