@@ -12,6 +12,7 @@
       height: 100vh;
       background-color: #f0f0f0;
       font-family: Arial, sans-serif;
+      transition: 0.5s ease
     }
 
   h1, h2, h3, h4, h5, h6, div {
@@ -74,8 +75,20 @@
 
     
     
-</style>
-</head><body><img src="/exploraos/images/botianimfinished.gif" class="background">
+</style><script> 
+    function getRandomColor() { 
+        const letters = '0123456789ABCDEF';
+        let color = '#'; 
+        for (let i = 0; i < 6; i++) { 
+            color += letters[Math.floor(Math.random() * 16)];
+        } return color;
+    } 
+    
+    function changeColor() { document.body.style.backgroundColor = getRandomColor(); } 
+
+    setInterval(changeColor, 3000);
+</script>
+</head><body>
     
     <div class="container"><img src="https://rediblesky.is-a.dev/home/warnIcon.png" <="" img="">
 <h2>404 Not Found</h2>
@@ -93,6 +106,7 @@
 
 
 </div>
+
 
 
 
