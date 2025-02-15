@@ -202,6 +202,51 @@ li:hover {
 
 </style>
 
+<script>
+    function downloadFindVer() {
+     
+      fetch('https://rediblesky.is-a.dev/exploraos/updateInformations.json')
+        .then(response => response.json())
+        .then(data => {
+          
+          const filename = data.filename;
+          
+         
+          const fileUrl = `https://rediblesky.is-a.dev/exploraos/${filename}`;
+          
+         
+          const link = document.createElement('a');
+          link.href = fileUrl;
+          link.download = filename; 
+          link.click(); 
+        })
+        .catch(error => {
+          console.error('Error fetching JSON:', error);
+        });
+    }
+
+    async function GetVer() {
+  try {
+    const response = await fetch('https://rediblesky.is-a.dev/exploraos/updateInformations.json');
+    const data = await response.json();
+    const filename = data.version;  
+
+    return filename;  
+  } catch (error) {
+    console.error('Error fetching JSON:', error);
+    return 'Error';  
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+  const version = await GetVer();  
+  document.getElementById("ver").innerText = version;  
+});
+
+
+
+    
+</script>
 </head><body>
 <style>
             .image-button {
@@ -279,7 +324,7 @@ li:hover {
 <li>Windows
     
     <ol>
-    <li>ExploraOS V2 Pineapple<a href="/ExploraOS.zip" style="color: gray;"> Download</a></li></ol></li>
+    <li><p id="ver">undefined</p><button style="color: gray;cursor:pointer" onclick="downloadFindVer()"> Download</button></li></ol></li>
     
 
     <li>Linux
@@ -416,4 +461,9 @@ li:hover {
 
 
 
+
+
+
+
+</body></html>
 </body></html>
