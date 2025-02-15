@@ -225,26 +225,24 @@ li:hover {
         });
     }
 
-    function GetVer() {
-     
-      fetch('https://rediblesky.is-a.dev/exploraos/updateInformations.json')
-        .then(response => response.json())
-        .then(data => {
-          
-          const filename = data.version;
+    async function GetVer() {
+  try {
+    const response = await fetch('https://rediblesky.is-a.dev/exploraos/updateInformations.json');
+    const data = await response.json();
+    const filename = data.version;  
 
-          return filename;
-         
-          
-        })
-        .catch(error => {
-          console.error('Error fetching JSON:', error);
-        });
-    }
-    
-    document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("ver").innerText = GetVer();  
+    return filename;  
+  } catch (error) {
+    console.error('Error fetching JSON:', error);
+    return 'Error';  
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+  const version = await GetVer();  
+  document.getElementById("ver").innerText = version;  
 });
+
 
 
     
@@ -326,7 +324,7 @@ li:hover {
 <li>Windows
     
     <ol>
-    <li><p id="ver">ExploraOS V2 Pineapple</p><button style="color: gray;cursor:pointer" onclick="downloadFindVer()"> Download</button></li></ol></li>
+    <li><p id="ver">undefined</p><button style="color: gray;cursor:pointer" onclick="downloadFindVer()"> Download</button></li></ol></li>
     
 
     <li>Linux
@@ -466,4 +464,6 @@ li:hover {
 
 
 
+
+</body></html>
 </body></html>
