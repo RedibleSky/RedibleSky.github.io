@@ -209,10 +209,10 @@ li:hover {
         .then(response => response.json())
         .then(data => {
           
-          const filename = data.filename;
+          const filename = data.setupfile;
           
          
-          const fileUrl = `https://rediblesky.is-a.dev/exploraos/${filename}`;
+          const fileUrl = `https://rediblesky.is-a.dev/exploraos/setupsExp/${filename}`;
           
          
           const link = document.createElement('a');
