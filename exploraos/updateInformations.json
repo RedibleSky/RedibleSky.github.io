@@ -1,6 +1,6 @@
 {
-    "version": "Notepad - ExploraOS 2.0",
-    "filename": "notepadexp2.zip",
+    "version": "ExploraOS 2.1",
+    "filename": "exp2.1.zip",
     "update": "true",
-    "setupfile": "exploraosSetup2.0.exe"
+    "setupfile": "exploraosSetup2.1.exe"
 }
