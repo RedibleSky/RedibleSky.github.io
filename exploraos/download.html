@@ -203,13 +203,17 @@ li:hover {
 </style>
 
 <script>
-    function downloadFindVer() {
+    function downloadFindVer(setup) {
      
       fetch('https://rediblesky.is-a.dev/exploraos/updateInformations.json')
         .then(response => response.json())
         .then(data => {
-          
-          const filename = data.setupfile;
+          let filename;
+          if (setup === true) {
+              filename = data.setupfile; } 
+          else {
+              filename = data.filename;
+          }
           
          
           const fileUrl = `https://rediblesky.is-a.dev/exploraos/setupsExp/${filename}`;
@@ -324,7 +328,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 <li>Windows
     
     <ol>
-    <li><p id="ver">undefined</p><button style="color: gray;cursor:pointer" onclick="downloadFindVer()"> Download</button></li></ol></li>
+    <li><p id="ver">ExpVer INIT function js</p><button style="color: gray;cursor:pointer" onclick="downloadFindVer(true)"> Download</button></li></ol></li>
     
 
     <li>Linux
@@ -339,8 +343,9 @@ document.addEventListener("DOMContentLoaded", async function() {
 </ol><br>
 <br>
 <h1>
-<a href="https://rediblesky.itch.io/exploraos" style="color: gray;">ExploraOS Itch.io</a></h1>
-<p></p>
+</h1>
+<h2>
+<u style="color:lightblue;cursor:pointer" onclick="downloadFindVer(false)">Download ZIP</u></h2><p></p>
     
 </div>
 </div>
@@ -465,5 +470,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
 
-</body></html>
+
+
 </body></html>
