@@ -1,6 +1,6 @@
 {
-    "version": "ExploraOS 2.1.3",
-    "filename": "exp2.1.3.zip",
+    "version": "ExploraOS 3.0",
+    "filename": "exp3.0.zip",
     "update": "true",
-    "setupfile": "exploraosSetup2.1.3.exe"
+    "setupfile": "exploraosSetup3.0.exe"
 }
