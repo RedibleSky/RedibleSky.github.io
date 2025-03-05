@@ -1,0 +1,53 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>planretv_nosource</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        #text {
+            position: absolute;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="text">No source</div>
+    <script>
+        const text = document.getElementById("text");
+        let x = 100, y = 100;
+        let dx = 3, dy = 3;
+        
+        function updatePosition() {
+            x += dx;
+            y += dy;
+            
+            if (x + text.clientWidth >= window.innerWidth || x <= 0) {
+                dx = -dx;
+                changeColor();
+            }
+            if (y + text.clientHeight >= window.innerHeight || y <= 0) {
+                dy = -dy;
+                changeColor();
+            }
+            
+            text.style.left = x + "px";
+            text.style.top = y + "px";
+            requestAnimationFrame(updatePosition);
+        }
+        
+        function changeColor() {
+            text.style.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        }
+        
+        updatePosition();
+    </script>
+
+
+</body></html>
