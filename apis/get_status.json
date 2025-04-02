@@ -1,0 +1,18 @@
+{
+    "smartsky": {
+        "statusMessage": "Operational",
+        "code": 200
+    },
+    "escator": {
+        "statusMessage": "Operational",
+        "code": 200
+    },
+    "exploraos": {
+        "statusMessage": "Operational",
+        "code": 200
+    },
+    "boti": {
+        "statusMessage": "Operational",
+        "code": 200
+    }
+}
