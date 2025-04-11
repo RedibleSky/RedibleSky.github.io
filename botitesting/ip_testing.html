@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IP in Hex</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0e0e0e;
+      color: #00ffcc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    #ip, #hex {
+      margin: 10px;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <div id="ip">Fetching IP...</div>
+  <div id="hex"></div>
+
+  <script>
+    function ipToHex(ip) {
+      return ip.split('.')
+        .map(octet => parseInt(octet, 10).toString(16).padStart(2, '0'))
+        .join('').toUpperCase();
+    }
+
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        const ip = data.ip;
+        const hex = ipToHex(ip);
+        document.getElementById('ip').textContent = 'Your IP: ' + ip;
+        document.getElementById('hex').textContent = 'Hex: 0x' + hex;
+      })
+      .catch(() => {
+        document.getElementById('ip').textContent = 'Failed to get IP';
+      });
+  </script>
+</body>
+</html>
