@@ -19,29 +19,30 @@
       font-size: 1.5em;
     }
   </style>
-</head>
-<body>
-  <div id="ip">Fetching IP...</div>
-  <div id="hex"></div>
-
-  <script>
+  <script defer>
     function ipToHex(ip) {
       return ip.split('.')
         .map(octet => parseInt(octet, 10).toString(16).padStart(2, '0'))
         .join('').toUpperCase();
     }
 
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => {
-        const ip = data.ip;
-        const hex = ipToHex(ip);
-        document.getElementById('ip').textContent = 'Your IP: ' + ip;
-        document.getElementById('hex').textContent = 'Hex: 0x' + hex;
-      })
-      .catch(() => {
-        document.getElementById('ip').textContent = 'Failed to get IP';
-      });
+    window.addEventListener("DOMContentLoaded", () => {
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => {
+          const ip = data.ip;
+          const hex = ipToHex(ip);
+          document.getElementById('ip').textContent = 'Your IP: ' + ip;
+          document.getElementById('hex').textContent = 'Hex: 0x' + hex;
+        })
+        .catch(() => {
+          document.getElementById('ip').textContent = 'Failed to get IP';
+        });
+    });
   </script>
+</head>
+<body>
+  <div id="ip">Fetching IP...</div>
+  <div id="hex"></div>
 </body>
 </html>
