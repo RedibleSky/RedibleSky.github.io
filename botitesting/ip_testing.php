@@ -5,8 +5,15 @@ function ipToHex($ip) {
     foreach ($parts as $part) {
         $hex .= str_pad(dechex((int)$part), 2, '0', STR_PAD_LEFT);
     }
-    return '0x' . strtoupper($hex);
+    return strtoupper($hex);
 }
 
-header("Content-Type: text/plain");
-echo ipToHex($_SERVER['REMOTE_ADDR']);
+$ip = $_SERVER['REMOTE_ADDR'];
+$hexIp = ipToHex($ip);
+
+header('Content-Type: application/json');
+echo json_encode([
+    'ip' => $ip,
+    'hex' => '0x' . $hexIp
+]);
+?>
