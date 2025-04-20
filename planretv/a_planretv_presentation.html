@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanreTV</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3), rgba(255, 255, 0, 0.3));
+            overflow: hidden;
+            position: relative;
+            animation: backgroundAnimation 6s infinite alternate;
+        }
+
+        /* Animating the random circles in the background */
+        .circle1 {
+            position: absolute;
+            top: 15vh;
+            left: 10vw;
+            border-radius: 100vw;
+            animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out;
+            animation-direction: alternate;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(12, 119, 255, 0.3) 15.62%, rgba(12, 119, 255, 0) 100%);
+        }
+
+        .circle2 {
+            position: absolute;
+            top: 30vh;
+            left: 70vw;
+            border-radius: 100vw;
+            animation: circle1Path 15s infinite, fadeCircleIn 1500ms ease-out;
+            animation-direction: alternate;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(255, 165, 0, 0.3) 15.62%, rgba(255, 165, 0, 0) 100%);
+        }
+
+        .circle3 {
+            position: absolute;
+            top: 50vh;
+            left: 30vw;
+            border-radius: 100vw;
+            animation: circle1Path 18s infinite, fadeCircleIn 1700ms ease-out;
+            animation-direction: alternate;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 0, 0.3) 15.62%, rgba(0, 255, 0, 0) 100%);
+        }
+
+        .circle4 {
+            position: absolute;
+            top: 20vh;
+            left: 50vw;
+            border-radius: 100vw;
+            animation: circle1Path 10s infinite, fadeCircleIn 1200ms ease-out;
+            animation-direction: alternate;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 255, 0.3) 15.62%, rgba(255, 0, 255, 0) 100%);
+        }
+
+        .circle5 {
+            position: absolute;
+            top: 60vh;
+            left: 20vw;
+            border-radius: 100vw;
+            animation: circle1Path 14s infinite, fadeCircleIn 1600ms ease-out;
+            animation-direction: alternate;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 0, 0.3) 15.62%, rgba(255, 255, 0, 0) 100%);
+        }
+
+        /* Animations for circle movement and fade-in */
+        @keyframes circle1Path {
+            0% {
+                transform: translateX(0px) translateY(0px);
+            }
+            50% {
+                transform: translateX(100px) translateY(100px);
+            }
+            100% {
+                transform: translateX(0px) translateY(0px);
+            }
+        }
+
+        @keyframes fadeCircleIn {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Animation for text appearance */
+        .text {
+            position: absolute;
+            opacity: 0;
+            font-size: 3rem;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            animation: textSlideIn 1s forwards 1s;
+        }
+
+        @keyframes textSlideIn {
+            0% {
+                left: -100vw;
+                opacity: 0;
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 1;
+            }
+        }
+
+        /* Background Animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background: radial-gradient(circle, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3), rgba(255, 255, 0, 0.3));
+            }
+            100% {
+                background: radial-gradient(circle, rgba(0, 255, 0, 0.3), rgba(255, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Circles with random colors -->
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <div class="circle5"></div>
+
+    <!-- PlanreTV Text -->
+    <div class="text">PlanreTV</div>
+
+</body>
+</html>
