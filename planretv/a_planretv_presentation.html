@@ -18,54 +18,52 @@
             animation: backgroundAnimation 6s infinite alternate;
         }
 
-        /* Animating the random circles in the background with color transitions */
-        .circle1 {
+        /* Circle styles */
+        .circle1, .circle2, .circle3, .circle4, .circle5 {
             position: absolute;
+            border-radius: 100vw;
+            animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out;
+            animation-direction: alternate;
+            transition: background 3s ease-in-out;
+        }
+
+        .circle1 {
             top: 15vh;
             left: 10vw;
-            border-radius: 100vw;
-            animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out, colorTransition1 8s infinite alternate;
-            animation-direction: alternate;
+            width: 100px;
+            height: 100px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(12, 119, 255, 0.3) 15.62%, rgba(12, 119, 255, 0) 100%);
         }
 
         .circle2 {
-            position: absolute;
             top: 30vh;
             left: 70vw;
-            border-radius: 100vw;
-            animation: circle1Path 15s infinite, fadeCircleIn 1500ms ease-out, colorTransition2 9s infinite alternate;
-            animation-direction: alternate;
+            width: 120px;
+            height: 120px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 165, 0, 0.3) 15.62%, rgba(255, 165, 0, 0) 100%);
         }
 
         .circle3 {
-            position: absolute;
             top: 50vh;
             left: 30vw;
-            border-radius: 100vw;
-            animation: circle1Path 18s infinite, fadeCircleIn 1700ms ease-out, colorTransition3 10s infinite alternate;
-            animation-direction: alternate;
+            width: 110px;
+            height: 110px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 0, 0.3) 15.62%, rgba(0, 255, 0, 0) 100%);
         }
 
         .circle4 {
-            position: absolute;
             top: 20vh;
             left: 50vw;
-            border-radius: 100vw;
-            animation: circle1Path 10s infinite, fadeCircleIn 1200ms ease-out, colorTransition4 7s infinite alternate;
-            animation-direction: alternate;
+            width: 130px;
+            height: 130px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 255, 0.3) 15.62%, rgba(255, 0, 255, 0) 100%);
         }
 
         .circle5 {
-            position: absolute;
             top: 60vh;
             left: 20vw;
-            border-radius: 100vw;
-            animation: circle1Path 14s infinite, fadeCircleIn 1600ms ease-out, colorTransition5 6s infinite alternate;
-            animation-direction: alternate;
+            width: 140px;
+            height: 140px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 0, 0.3) 15.62%, rgba(255, 255, 0, 0) 100%);
         }
 
@@ -94,49 +92,13 @@
             }
         }
 
-        /* Color Transition for the circles */
-        @keyframes colorTransition1 {
+        /* Background Animation */
+        @keyframes backgroundAnimation {
             0% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(12, 119, 255, 0.3) 15.62%, rgba(12, 119, 255, 0) 100%);
+                background: radial-gradient(circle, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3), rgba(255, 255, 0, 0.3));
             }
             100% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 255, 0.3) 15.62%, rgba(0, 255, 255, 0) 100%);
-            }
-        }
-
-        @keyframes colorTransition2 {
-            0% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 165, 0, 0.3) 15.62%, rgba(255, 165, 0, 0) 100%);
-            }
-            100% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 105, 180, 0.3) 15.62%, rgba(255, 105, 180, 0) 100%);
-            }
-        }
-
-        @keyframes colorTransition3 {
-            0% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 0, 0.3) 15.62%, rgba(0, 255, 0, 0) 100%);
-            }
-            100% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(34, 193, 195, 0.3) 15.62%, rgba(34, 193, 195, 0) 100%);
-            }
-        }
-
-        @keyframes colorTransition4 {
-            0% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 255, 0.3) 15.62%, rgba(255, 0, 255, 0) 100%);
-            }
-            100% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(238, 130, 238, 0.3) 15.62%, rgba(238, 130, 238, 0) 100%);
-            }
-        }
-
-        @keyframes colorTransition5 {
-            0% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 0, 0.3) 15.62%, rgba(255, 255, 0, 0) 100%);
-            }
-            100% {
-                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 99, 71, 0.3) 15.62%, rgba(255, 99, 71, 0) 100%);
+                background: radial-gradient(circle, rgba(0, 255, 0, 0.3), rgba(255, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
             }
         }
 
@@ -144,8 +106,8 @@
         .text {
             position: absolute;
             opacity: 0;
-            font-size: 5rem; /* Increase the size of the text */
-            font-weight: bold; /* Make the text bold */
+            font-size: 5rem;
+            font-weight: bold;
             font-family: Arial, sans-serif;
             color: #fff;
             animation: textSlideIn 1s forwards 1s;
@@ -163,16 +125,6 @@
             }
         }
 
-        /* Background Animation */
-        @keyframes backgroundAnimation {
-            0% {
-                background: radial-gradient(circle, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3), rgba(255, 255, 0, 0.3));
-            }
-            100% {
-                background: radial-gradient(circle, rgba(0, 255, 0, 0.3), rgba(255, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -186,6 +138,17 @@
 
     <!-- PlanreTV Text -->
     <div class="text">PlanreTV</div>
+
+    <script>
+        // Randomize the background color of circles every 3 seconds
+        setInterval(function() {
+            const circles = document.querySelectorAll('.circle1, .circle2, .circle3, .circle4, .circle5');
+            circles.forEach(circle => {
+                const randomColor = `radial-gradient(50% 50% at 50% 50%, rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.3) 15.62%, rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0) 100%)`;
+                circle.style.background = randomColor;
+            });
+        }, 3000); // Update every 3 seconds
+    </script>
 
 </body>
 </html>
