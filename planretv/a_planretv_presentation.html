@@ -18,13 +18,13 @@
             animation: backgroundAnimation 6s infinite alternate;
         }
 
-        /* Animating the random circles in the background */
+        /* Animating the random circles in the background with color transitions */
         .circle1 {
             position: absolute;
             top: 15vh;
             left: 10vw;
             border-radius: 100vw;
-            animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out;
+            animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out, colorTransition1 8s infinite alternate;
             animation-direction: alternate;
             background: radial-gradient(50% 50% at 50% 50%, rgba(12, 119, 255, 0.3) 15.62%, rgba(12, 119, 255, 0) 100%);
         }
@@ -34,7 +34,7 @@
             top: 30vh;
             left: 70vw;
             border-radius: 100vw;
-            animation: circle1Path 15s infinite, fadeCircleIn 1500ms ease-out;
+            animation: circle1Path 15s infinite, fadeCircleIn 1500ms ease-out, colorTransition2 9s infinite alternate;
             animation-direction: alternate;
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 165, 0, 0.3) 15.62%, rgba(255, 165, 0, 0) 100%);
         }
@@ -44,7 +44,7 @@
             top: 50vh;
             left: 30vw;
             border-radius: 100vw;
-            animation: circle1Path 18s infinite, fadeCircleIn 1700ms ease-out;
+            animation: circle1Path 18s infinite, fadeCircleIn 1700ms ease-out, colorTransition3 10s infinite alternate;
             animation-direction: alternate;
             background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 0, 0.3) 15.62%, rgba(0, 255, 0, 0) 100%);
         }
@@ -54,7 +54,7 @@
             top: 20vh;
             left: 50vw;
             border-radius: 100vw;
-            animation: circle1Path 10s infinite, fadeCircleIn 1200ms ease-out;
+            animation: circle1Path 10s infinite, fadeCircleIn 1200ms ease-out, colorTransition4 7s infinite alternate;
             animation-direction: alternate;
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 255, 0.3) 15.62%, rgba(255, 0, 255, 0) 100%);
         }
@@ -64,7 +64,7 @@
             top: 60vh;
             left: 20vw;
             border-radius: 100vw;
-            animation: circle1Path 14s infinite, fadeCircleIn 1600ms ease-out;
+            animation: circle1Path 14s infinite, fadeCircleIn 1600ms ease-out, colorTransition5 6s infinite alternate;
             animation-direction: alternate;
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 0, 0.3) 15.62%, rgba(255, 255, 0, 0) 100%);
         }
@@ -94,11 +94,58 @@
             }
         }
 
+        /* Color Transition for the circles */
+        @keyframes colorTransition1 {
+            0% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(12, 119, 255, 0.3) 15.62%, rgba(12, 119, 255, 0) 100%);
+            }
+            100% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 255, 0.3) 15.62%, rgba(0, 255, 255, 0) 100%);
+            }
+        }
+
+        @keyframes colorTransition2 {
+            0% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 165, 0, 0.3) 15.62%, rgba(255, 165, 0, 0) 100%);
+            }
+            100% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 105, 180, 0.3) 15.62%, rgba(255, 105, 180, 0) 100%);
+            }
+        }
+
+        @keyframes colorTransition3 {
+            0% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 0, 0.3) 15.62%, rgba(0, 255, 0, 0) 100%);
+            }
+            100% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(34, 193, 195, 0.3) 15.62%, rgba(34, 193, 195, 0) 100%);
+            }
+        }
+
+        @keyframes colorTransition4 {
+            0% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 255, 0.3) 15.62%, rgba(255, 0, 255, 0) 100%);
+            }
+            100% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(238, 130, 238, 0.3) 15.62%, rgba(238, 130, 238, 0) 100%);
+            }
+        }
+
+        @keyframes colorTransition5 {
+            0% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 0, 0.3) 15.62%, rgba(255, 255, 0, 0) 100%);
+            }
+            100% {
+                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 99, 71, 0.3) 15.62%, rgba(255, 99, 71, 0) 100%);
+            }
+        }
+
         /* Animation for text appearance */
         .text {
             position: absolute;
             opacity: 0;
-            font-size: 3rem;
+            font-size: 5rem; /* Increase the size of the text */
+            font-weight: bold; /* Make the text bold */
             font-family: Arial, sans-serif;
             color: #fff;
             animation: textSlideIn 1s forwards 1s;
