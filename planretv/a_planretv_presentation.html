@@ -20,23 +20,25 @@
         }
 
         /* Circle styles */
-        .circle1, .circle2, .circle3, .circle4, .circle5 {
+        .circle {
             position: absolute;
             border-radius: 100vw;
-            animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out;
+            animation: circlePath 12s infinite, fadeCircleIn 1332ms ease-out;
             animation-direction: alternate;
             transition: background 3s ease-in-out; /* Transition for circle colors */
         }
 
-        .circle1 {
+        /* Circles will be added dynamically */
+        .circle:nth-child(1) {
             top: 15vh;
             left: 10vw;
             width: 100px;
             height: 100px;
             background: radial-gradient(50% 50% at 50% 50%, rgba(12, 119, 255, 0.3) 15.62%, rgba(12, 119, 255, 0) 100%);
         }
-
-        .circle2 {
+        
+        /* Add additional circles */
+        .circle:nth-child(2) {
             top: 30vh;
             left: 70vw;
             width: 120px;
@@ -44,7 +46,7 @@
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 165, 0, 0.3) 15.62%, rgba(255, 165, 0, 0) 100%);
         }
 
-        .circle3 {
+        .circle:nth-child(3) {
             top: 50vh;
             left: 30vw;
             width: 110px;
@@ -52,7 +54,7 @@
             background: radial-gradient(50% 50% at 50% 50%, rgba(0, 255, 0, 0.3) 15.62%, rgba(0, 255, 0, 0) 100%);
         }
 
-        .circle4 {
+        .circle:nth-child(4) {
             top: 20vh;
             left: 50vw;
             width: 130px;
@@ -60,7 +62,7 @@
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 255, 0.3) 15.62%, rgba(255, 0, 255, 0) 100%);
         }
 
-        .circle5 {
+        .circle:nth-child(5) {
             top: 60vh;
             left: 20vw;
             width: 140px;
@@ -68,8 +70,31 @@
             background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 0, 0.3) 15.62%, rgba(255, 255, 0, 0) 100%);
         }
 
+        /* Additional 10 circles */
+        .circle:nth-child(n+6) {
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 255, 0.3) 15.62%, rgba(0, 0, 255, 0) 100%);
+        }
+
+        .circle:nth-child(6) { top: 70vh; left: 40vw; }
+        .circle:nth-child(7) { top: 10vh; left: 80vw; }
+        .circle:nth-child(8) { top: 80vh; left: 30vw; }
+        .circle:nth-child(9) { top: 40vh; left: 60vw; }
+        .circle:nth-child(10) { top: 15vh; left: 85vw; }
+        .circle:nth-child(11) { top: 25vh; left: 50vw; }
+        .circle:nth-child(12) { top: 55vh; left: 15vw; }
+        .circle:nth-child(13) { top: 65vh; left: 75vw; }
+        .circle:nth-child(14) { top: 45vh; left: 25vw; }
+        .circle:nth-child(15) { top: 5vh; left: 35vw; }
+        .circle:nth-child(16) { top: 75vh; left: 10vw; }
+        .circle:nth-child(17) { top: 85vh; left: 80vw; }
+        .circle:nth-child(18) { top: 35vh; left: 90vw; }
+        .circle:nth-child(19) { top: 50vh; left: 90vw; }
+        .circle:nth-child(20) { top: 70vh; left: 10vw; }
+
         /* Animations for circle movement and fade-in */
-        @keyframes circle1Path {
+        @keyframes circlePath {
             0% {
                 transform: translateX(0px) translateY(0px);
             }
@@ -110,9 +135,8 @@
             font-size: 5rem;
             font-weight: bold;
             font-family: Arial, sans-serif;
-            color: #fff;
+            color: #fff; /* Keep the text white */
             animation: textSlideIn 1s forwards 1s;
-            transition: color 3s ease-in-out; /* Transition for text color */
         }
 
         @keyframes textSlideIn {
@@ -132,11 +156,26 @@
 <body>
 
     <!-- Circles with random colors -->
-    <div class="circle1"></div>
-    <div class="circle2"></div>
-    <div class="circle3"></div>
-    <div class="circle4"></div>
-    <div class="circle5"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
 
     <!-- PlanreTV Text -->
     <div class="text">PlanreTV</div>
@@ -144,19 +183,12 @@
     <script>
         // Randomize the background color of circles every 3 seconds
         setInterval(function() {
-            const circles = document.querySelectorAll('.circle1, .circle2, .circle3, .circle4, .circle5');
+            const circles = document.querySelectorAll('.circle');
             circles.forEach(circle => {
                 const randomColor = `radial-gradient(50% 50% at 50% 50%, rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.3) 15.62%, rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0) 100%)`;
                 circle.style.background = randomColor;
             });
         }, 3000); // Update every 3 seconds
-
-        // Randomize text color every 5 seconds for effect
-        setInterval(function() {
-            const text = document.querySelector('.text');
-            const randomTextColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-            text.style.color = randomTextColor;
-        }, 5000); // Update text color every 5 seconds
     </script>
 
 </body>
