@@ -16,6 +16,7 @@
             overflow: hidden;
             position: relative;
             animation: backgroundAnimation 6s infinite alternate;
+            transition: background 3s ease-in-out; /* Transition for background color */
         }
 
         /* Circle styles */
@@ -24,7 +25,7 @@
             border-radius: 100vw;
             animation: circle1Path 12s infinite, fadeCircleIn 1332ms ease-out;
             animation-direction: alternate;
-            transition: background 3s ease-in-out;
+            transition: background 3s ease-in-out; /* Transition for circle colors */
         }
 
         .circle1 {
@@ -111,6 +112,7 @@
             font-family: Arial, sans-serif;
             color: #fff;
             animation: textSlideIn 1s forwards 1s;
+            transition: color 3s ease-in-out; /* Transition for text color */
         }
 
         @keyframes textSlideIn {
@@ -148,6 +150,13 @@
                 circle.style.background = randomColor;
             });
         }, 3000); // Update every 3 seconds
+
+        // Randomize text color every 5 seconds for effect
+        setInterval(function() {
+            const text = document.querySelector('.text');
+            const randomTextColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+            text.style.color = randomTextColor;
+        }, 5000); // Update text color every 5 seconds
     </script>
 
 </body>
