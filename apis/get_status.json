@@ -18,5 +18,10 @@
         "statusMessage": "Operational",
         "code": 200,
         "level": "green"
+    },
+    "UOSG": {
+        "statusMessage": "Operational",
+        "code": 200,
+        "level": "green"
     }
 }
