@@ -1,8 +1,8 @@
 {
     "smartsky": {
-        "statusMessage": "Operational",
+        "statusMessage": "Disk Problem",
         "code": 200,
-        "level": "green"
+        "level": "orange"
     },
     "escator": {
         "statusMessage": "Operational",
