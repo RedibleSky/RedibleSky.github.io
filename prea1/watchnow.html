@@ -166,6 +166,12 @@ function startStream(url) {
 
 video.addEventListener("playing", showVideo);
 
+video.addEventListener("canplay", () => {
+    if (!video.paused) {
+        showVideo();
+    }
+});
+
 video.addEventListener("waiting", () => {
     clearTimeout(stallTimer);
 
