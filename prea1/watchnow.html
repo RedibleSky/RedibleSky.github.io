@@ -50,12 +50,14 @@ body {
 
 #no-media {
     display: block;
+    visibility: visible;
     z-index: 2;
 }
 
 #player {
     display: none;
-}        
+    visibility: visible;
+}     
 </style>
    </head>
     <body>
@@ -102,7 +104,10 @@ function showVideo() {
     clearTimeout(stallTimer);
 
     image.style.display = "none";
+    image.style.visibility = "hidden";
+
     video.style.display = "block";
+    video.style.visibility = "visible";
 
     music.pause();
     music.currentTime = 0;
@@ -167,7 +172,7 @@ function startStream(url) {
 video.addEventListener("playing", showVideo);
 
 video.addEventListener("canplay", () => {
-    if (!video.paused) {
+    if (video.readyState >= 3) {
         showVideo();
     }
 });
