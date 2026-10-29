@@ -65,43 +65,177 @@ body {
     
 
 
-<iframe id="player"
-        style="width:100%; height:100%; border:0;"
-        allow="autoplay; fullscreen"
-        allowfullscreen>
-</iframe>
+<div id="player-container">
+    <img id="no-media" src="/prea1/assets/nomedia.png"
+         alt="Flux PREA1 indisponible">
+    <video id="player" controls autoplay playsinline></video>
+</div>
+
+<audio id="waiting-music"
+       src="/planretv/PREA1%20wait%20music.mp3"
+       loop></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
 
 
 <script>
 
-const player = document.getElementById("player");
-const jsonURL = "/prea1/data/videolink.json";
 
+const video = document.getElementById("player");
+const image = document.getElementById("no-media");
+const music = document.getElementById("waiting-music");
+
+const jsonURL = "/prea1/data/videolink.json";
+const CHECK_INTERVAL = 5000;
+const STALL_TIMEOUT = 8000;
+
+let hls = null;
 let currentURL = "";
+let checkTimer = null;
+let stallTimer = null;
+let waiting = true;
+let checking = false;
+
+function showImage() {
+    waiting = true;
+    video.style.display = "none";
+    image.style.display = "block";
+
+    music.play().catch(() => {});
+}
+
+function showVideo() {
+    waiting = false;
+    clearTimeout(stallTimer);
+
+    image.style.display = "none";
+    video.style.display = "block";
+
+    music.pause();
+    music.currentTime = 0;
+}
+
+function stopStream() {
+    clearTimeout(stallTimer);
+
+    if (hls) {
+        hls.destroy();
+        hls = null;
+    }
+
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+}
+
+function scheduleCheck(delay = CHECK_INTERVAL) {
+    clearTimeout(checkTimer);
+    checkTimer = setTimeout(checkVideo, delay);
+}
+
+function startStream(url) {
+    stopStream();
+    currentURL = url;
+    showImage();
+
+    if (window.Hls && Hls.isSupported()) {
+        hls = new Hls({
+            manifestLoadingMaxRetry: 2,
+            levelLoadingMaxRetry: 2,
+            fragLoadingMaxRetry: 2
+        });
+
+        hls.on(Hls.Events.ERROR, (event, data) => {
+            if (data.fatal) {
+                stopStream();
+                currentURL = "";
+                showImage();
+                scheduleCheck();
+            }
+        });
+
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            video.play().catch(() => {});
+        });
+
+        hls.loadSource(url);
+        hls.attachMedia(video);
+
+    } else if (
+        video.canPlayType("application/vnd.apple.mpegurl")
+    ) {
+        video.src = url;
+        video.play().catch(() => {});
+    } else {
+        console.error("HLS n'est pas pris en charge.");
+    }
+}
+
+video.addEventListener("playing", showVideo);
+
+video.addEventListener("waiting", () => {
+    clearTimeout(stallTimer);
+
+    stallTimer = setTimeout(() => {
+        if (video.readyState < 3) {
+            showImage();
+        }
+    }, STALL_TIMEOUT);
+});
+
+video.addEventListener("error", () => {
+    stopStream();
+    currentURL = "";
+    showImage();
+    scheduleCheck();
+});
 
 async function checkVideo() {
+    if (checking) return;
+    checking = true;
+
     try {
         const response = await fetch(
             jsonURL + "?t=" + Date.now(),
             { cache: "no-store" }
         );
 
-        if (!response.ok) throw new Error("JSON inaccessible");
+        if (!response.ok) {
+            throw new Error("JSON inaccessible");
+        }
 
         const data = await response.json();
 
-        if (data.video && data.video !== currentURL) {
-            currentURL = data.video;
-            player.src = data.video;
+        if (
+            typeof data.video !== "string" ||
+            !data.video.startsWith("https://")
+        ) {
+            throw new Error("URL vidéo invalide");
+        }
+
+        if (data.video !== currentURL) {
+            startStream(data.video);
         }
     } catch (error) {
-        console.error("Erreur du flux :", error);
+        console.error("Flux PREA1 indisponible :", error);
+        stopStream();
+        currentURL = "";
+        showImage();
+    } finally {
+        checking = false;
+        scheduleCheck();
     }
-
-    setTimeout(checkVideo, 5000);
 }
 
+document.addEventListener("click", () => {
+    if (waiting) {
+        music.play().catch(() => {});
+    }
+});
+
+showImage();
 checkVideo();
+
 </script>
 
 </body></html>
